@@ -8,7 +8,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch('http://teacherfinder-server.herokuapp.com/api/users')
     .then(response => response.json())
     .then(json => this.setState({users:json}))
   }
