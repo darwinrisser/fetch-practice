@@ -6,7 +6,8 @@ import './App.css';
 
 class App extends Component {
   state = {
-    users: []
+    users: [],
+    search: ""
   }
 
   componentDidMount(){
@@ -15,17 +16,25 @@ class App extends Component {
     .then(json => this.setState({users:json}))
   }
   
-  render() {
+  onchange = e => {
+    this.setState({ search : e.target.value });
+  }
 
-    const cards = this.state.users.map((u,i)=>{
+  render() {
+    const {search} = this.state;
+    const filteredUsers = this.state.users.filter(user=>{
+      return user.instrument.toLowerCase().indexOf( search.toLowerCase() ) !== -1
+    })
+    const cards = filteredUsers.map((u,i)=>{
       return <UserCard key={i} user={u} />
     });
 
      return (
       <div className="App">
         <header>
-          <Nav/>
-          <SearchBar/>
+          
+            <input type="text" label="narrow down your search" onChange={this.onchange}/>
+          
         </header>
         <main className="main">
           {cards}
