@@ -5,7 +5,10 @@ function UserCard(props) {
     return(
         <div className="card">
             <h1>{props.user.name}</h1>
-            <p>{props.user.email}</p>
+            <img src={props.user.image} alt={props.user.name}/>
+            <p>{props.user.instrument}</p>
+            <p>{props.user.location}</p>
+            <a href="mailto: {props.user.email}" target="_blank" className="navLink"><button id="messageBtn"><i class="far fa-envelope"></i> Message</button></a>
         </div>
         );
     }

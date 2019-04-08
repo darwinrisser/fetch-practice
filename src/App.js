@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import UserCard from './components/UserCard'
+import UserCard from './components/UserCard';
+import SearchBar from './components/SearchBar';
+import Nav from './components/Nav';
 import './App.css';
 
 class App extends Component {
@@ -21,7 +23,13 @@ class App extends Component {
 
      return (
       <div className="App">
-        {cards}
+        <header>
+          <Nav/>
+          <SearchBar/>
+        </header>
+        <main className="main">
+          {cards}
+        </main>
       </div>
     );
   }
